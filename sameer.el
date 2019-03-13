@@ -1,5 +1,6 @@
 ;; no-to use-package, thanks to my version
 ;; why not setq? Nor far all
+;; why not lambda ? name space 
 ;; why not eval-after-load?
 ;;hook is a  variable holding a list of functions
 ;; To-Do (dolist (hook '(prog-mode-hook text-mode-hook css-mode-hook ...))
@@ -12,11 +13,16 @@
   (interactive)
   (call-interactively 'package-delete))
 ;; I want it to take a list
-(funcall-interactively 'sameer/delete org-dotemacs)
 ;; add to list?
+;; (funcall #'sameer/delete org org-download)
+;; closure? 
 (defun sameer/refresh ()
   (interactive)
   (call-interactively 'package-refresh-contnts))
 (defun sameer/install ()
   (interactive)
   (call-interactively 'package-install))
+(dolist (hook '(c-mode-common-hook))
+  (add-hook  'sameer/theme 'sameer/delete 'sameer/refresh 'sameer/install))
+
+
