@@ -22,6 +22,7 @@
 (defun sameer/install ()
   (interactive)
   (call-interactively 'package-install))
+;; why not macro ?
 (dolist (hook '(c-mode-common-hook))
   (add-hook  'sameer/theme 'sameer/delete 'sameer/refresh 'sameer/install))
 
